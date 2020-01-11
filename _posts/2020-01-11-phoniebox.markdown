@@ -20,11 +20,16 @@ These are some notes for me to remember how I built it.
 
     `cd; rm buster-install-*; wget https://raw.githubusercontent.com/MiczFlor/RPi-Jukebox-RFID/master/scripts/installscripts/buster-install-default.sh; chmod +x buster-install-default.sh; ./buster-install-default.sh`
 
-    See also [here for details][install-phoniebox]
+    See also [here for details][install-phoniebox].
+
+    I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
 
 7. Fix speaker outpit
 8. fix gpio buttons
 9. install onoff shim and change led pin
+
+Sketch:
+![sketch](/assets/images/IMG_20200111_212542257.jpg)
 
 **to be continued**
 
