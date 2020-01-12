@@ -17,7 +17,7 @@ Here's a description how I did it on Windows with WSL and Visual Studio Code.
 1. Create a Github repository with the following name `https://github.com/YourUsername/YourUsername.github.io`, see also [here][github-pages].
 2. Clone the repo locally to your machine.
 3. Open your WSL command prompt.
-4. Install Ruby development tools, if necessary. E.g. `sudo apt install ruby-dev`
+4. Install Ruby development tools, if necessary, see also [here][jekyll-docs]. E.g. `sudo apt install ruby-dev`
 5. Install needed gems with `sudo gem install jekyll bundler github-pages`
 6. Change directory to the local copy of the repo
 7. Create a new Jekyll site here with `jekyll new .`
