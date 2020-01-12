@@ -61,14 +61,14 @@ Software installation first, so everything can be tested.
     I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
 
 7. I configured the sound according to this [description][fix-sound].
-8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file ˋscripts/gpio-buttons.pyˋ the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
+8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file `scripts/gpio-buttons.py` the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
 9. Install [OnOffShim][onoffshim] software with this one line command
 
-   ˋcurl https://get.pimoroni.com/onoffshim | bashˋ
+    `curl https://get.pimoroni.com/onoffshim | bash`
 
-    Set ˋdaemon_active=1ˋ, ˋled_pin=25ˋ and ˋhold_time=1ˋ in file ˋ/etc/cleanshutd.confˋ
+    Set `daemon_active=1`, `led_pin=25` and `hold_time=1` in file `/etc/cleanshutd.conf`
 
-10. Reboot with ˋsudo rebootˋ.
+10. Reboot with `sudo reboot`.
 
 # Gotchas, lessons learned, etc. #
 
