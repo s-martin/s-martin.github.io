@@ -15,11 +15,13 @@ These are some notes for me to remember how I built it.
 
 For my kids I wanted to use RFID cards. In addition the box should have buttons for `Play/Pause`, `FF`, `Rwd`, `Volume up` and `Volume down`.
 
-I wanted the box portable, so I need a power bank
+I wanted the box portable, so I needed a power bank.
 
 My coworker has built a excellent custom-made case which fulfills my needs.
 
 ![case](/assets/images/IMG_20191223_232037747.jpg)
+
+That [blog post][blog-instructions] (in German) provided lots of information and I used especially the On/Off description. Thanks for providing that info!
 
 # Hardware #
 
@@ -58,14 +60,21 @@ Software installation first, so everything can be tested.
 
     I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
 
-7. Configure the sound according to this [description][fix-sound]
+7. I configured the sound according to this [description][fix-sound].
 8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file ˋscripts/gpio-buttons.pyˋ the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
-9. install onoff shim and change led pin
+9. Install [OnOffShim][onoffshim] software with this one line command
+
+   ˋcurl https://get.pimoroni.com/onoffshim | bashˋ
+
+    Set ˋdaemon_active=1ˋ, ˋled_pin=25ˋ and ˋhold_time=1ˋ in file ˋ/etc/cleanshutd.confˋ
+
+10. Reboot with ˋsudo rebootˋ.
 
 # Gotchas, lessons learned, etc. #
 
 **to be continued**
 
+[blog-instructions]: http://splittscheid.de/selfmade-phoniebox/
 [phoniebox]: https://github.com/MiczFlor/RPi-Jukebox-RFID
 [raspian-image]: https://downloads.raspberrypi.org/raspbian_lite_latest
 [preconfigure-wifi]: https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi
