@@ -83,3 +83,4 @@ Software installation first, so everything can be tested.
 [install-phoniebox]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/INSTALL-stretch#one-line-install-command
 [fix-sound]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Troubleshooting-FAQ#audio-is-not-working
 [gpio-config]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons#how-to-connect-the-buttons
+[onoffshim]: https://shop.pimoroni.com/products/onoff-shim
