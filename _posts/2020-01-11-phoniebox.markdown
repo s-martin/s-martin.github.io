@@ -50,7 +50,7 @@ Software installation first, so everything can be tested.
 3. [Install][install-rpi] Raspberry Pi with [BalenaEtcher][balenaetcher]
 4. Rename to *phoniebox* with `sudo nano /etc/hostname`
 5. Login with ssh (default user name: `pi`, default password: `raspberry`)
-6. Install Phoniebox software with one line command
+6. Install Phoniebox software (for Raspian Buster) with one line command
 
     `cd; rm buster-install-*; wget https://raw.githubusercontent.com/MiczFlor/RPi-Jukebox-RFID/master/scripts/installscripts/buster-install-default.sh; chmod +x buster-install-default.sh; ./buster-install-default.sh`
 
@@ -58,8 +58,8 @@ Software installation first, so everything can be tested.
 
     I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
 
-7. Fix speaker outpit
-8. fix gpio buttons
+7. Configure the sound according to this [description][fix-sound]
+8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file ˋscripts/gpio-buttons.pyˋ the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
 9. install onoff shim and change led pin
 
 # Gotchas, lessons learned, etc. #
@@ -72,3 +72,5 @@ Software installation first, so everything can be tested.
 [install-rpi]: https://www.raspberrypi.org/documentation/installation/installing-images/
 [balenaetcher]: https://www.balena.io/etcher/
 [install-phoniebox]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/INSTALL-stretch#one-line-install-command
+[fix-sound]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Troubleshooting-FAQ#audio-is-not-working
+[gpio-config]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons#how-to-connect-the-buttons
