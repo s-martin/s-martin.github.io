@@ -68,6 +68,8 @@ Software installation first, so everything can be tested.
 
     Set `daemon_active=1`, `led_pin=25` and `hold_time=1` in file `/etc/cleanshutd.conf`
 
+    Make sure the original Phoniebox shutdown script is used: Open `sudo nano /usr/bin/cleanshutd` and replace `shutdown -h +$shutdown_delay` with `/home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh -c=shutdown`. Be aware that `shutdown_delay` has no effect anymore.
+
 10. Reboot with `sudo reboot`.
 
 # Gotchas, lessons learned, etc. #
