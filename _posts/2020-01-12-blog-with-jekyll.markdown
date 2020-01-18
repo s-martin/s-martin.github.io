@@ -8,7 +8,7 @@ categories: github jekyll
 I have decided to use a blog to store descriptions for my hobby projects. While I have a server I decided 
 not to use it for blogging, because I don't want to maintain it.
 
-I have a [Github][github] account, so I decided to use [Github Pages][github-pages] together with [Jekyll][jekyll].
+I have a [Github][github] account, so I used [Github Pages][github-pages] together with [Jekyll][jekyll].
 
 Here's a description how I did it on Windows with WSL and Visual Studio Code.
 
@@ -42,7 +42,8 @@ gem "github-pages", group: :jekyll_plugins
 4. You can now open the blog in your browser at `http://127.0.0.1:4000`.
 
 # Publish at Github #
-1. With Git Commit and Push all files to your Github repo
+1. Git Commit and Push all files to your Github repo.
+2. Github builds the page and after a couple of minutes it should be available at https://YourUsername.github.io
 
 [github]: https://github.com/
 [github-pages]: https://pages.github.com/
