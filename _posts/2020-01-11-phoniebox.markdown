@@ -48,7 +48,7 @@ Wiring Sketch:
 Software installation first, so everything can be tested.
 
 1. Download latest [Raspian Lite image][raspian-image]
-2. Preconfigure WiFI in image, see [here][preconfigure-wifi]
+2. Preconfigure WiFi in image, see [here][preconfigure-wifi]
 3. [Install][install-rpi] Raspberry Pi with [BalenaEtcher][balenaetcher]
 4. Rename to *phoniebox* with `sudo nano /etc/hostname`
 5. Login with ssh (default user name: `pi`, default password: `raspberry`)
@@ -73,6 +73,10 @@ Software installation first, so everything can be tested.
 10. Reboot with `sudo reboot`.
 
 # Gotchas, lessons learned, etc. #
+
+* It’s really important to solder as good as possible (I’m not very good though). If you have cold solder joints it may or may not work, which can be really annoying.
+* Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work. 
+* It really helps to sketch the wiring on a piece of paper, so you can fix possible issues or misconnections much faster.
 
 **to be continued**
 
