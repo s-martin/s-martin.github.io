@@ -7,7 +7,7 @@ categories: phoniebox raspberrypi
 
 **WORK IN PROGRESS**
 
-For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after my coworker told me how much fun he had.
+For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after a friend told me how much fun he had.
 
 These are some notes for me to remember how I built it.
 
@@ -17,7 +17,7 @@ For my kids I wanted to use RFID cards. In addition the box should have buttons 
 
 I wanted the box portable, so I needed a power bank.
 
-My coworker has built a excellent custom-made case which fulfills my needs.
+My friend has built a excellent custom-made case which fulfills my needs.
 
 ![case](/assets/images/IMG_20191223_232037747.jpg)
 
