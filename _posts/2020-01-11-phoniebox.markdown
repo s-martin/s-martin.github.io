@@ -48,27 +48,27 @@ Wiring Sketch:
 Software installation first, so everything can be tested.
 
 1. Download latest [Raspian Lite image][raspian-image]
-2. Preconfigure WiFI in image, see [here][preconfigure-wifi]
-3. [Install][install-rpi] Raspberry Pi with [BalenaEtcher][balenaetcher]
+2. [Install][install-rpi] Raspberry Pi with [BalenaEtcher][balenaetcher]
+3. Preconfigure WiFI in image, see [here][preconfigure-wifi]
 4. Rename to *phoniebox* with `sudo nano /etc/hostname`
 5. Login with ssh (default user name: `pi`, default password: `raspberry`)
-6. Install Phoniebox software (for Raspian Buster) with one line command
+6. Install Phoniebox software (for Raspian Buster)
 
-    `cd; rm buster-install-*; wget https://raw.githubusercontent.com/MiczFlor/RPi-Jukebox-RFID/master/scripts/installscripts/buster-install-default.sh; chmod +x buster-install-default.sh; ./buster-install-default.sh`
+    1. Use this one line command: `cd; rm buster-install-*; wget https://raw.githubusercontent.com/MiczFlor/RPi-Jukebox-RFID/master/scripts/installscripts/buster-install-default.sh; chmod +x buster-install-default.sh; ./buster-install-default.sh`
 
-    See also [here for details][install-phoniebox].
+    2. See also [here for details][install-phoniebox].
 
-    I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
+    3. I use the *Classic* version as I don't use Spotify and it's supposed to be faster.
 
 7. I configured the sound according to this [description][fix-sound].
 8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file `scripts/gpio-buttons.py` the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
-9. Install [OnOffShim][onoffshim] software with this one line command
+9. Install [OnOffShim][onoffshim] software
 
-    `curl https://get.pimoroni.com/onoffshim | bash`
+    1. Use this one line command: `curl https://get.pimoroni.com/onoffshim | bash`
 
-    Set `daemon_active=1`, `led_pin=25` and `hold_time=1` in file `/etc/cleanshutd.conf`
+    2. Set `daemon_active=1`, `led_pin=25` and `hold_time=1` in file `/etc/cleanshutd.conf`
 
-    Make sure the original Phoniebox shutdown script is used: Open `sudo nano /usr/bin/cleanshutd` and replace `shutdown -h +$shutdown_delay` with `/home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh -c=shutdown`. Be aware that `shutdown_delay` has no effect anymore.
+    3. Make sure the original Phoniebox shutdown script is used: Open `sudo nano /usr/bin/cleanshutd` and replace `shutdown -h +$shutdown_delay` with `/home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh -c=shutdown`. Be aware that `shutdown_delay` has no effect anymore.
 
 10. Reboot with `sudo reboot`.
 
