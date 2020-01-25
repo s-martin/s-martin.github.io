@@ -7,7 +7,7 @@ categories: phoniebox raspberrypi
 
 **WORK IN PROGRESS**
 
-For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after my coworker told me how much fun he had.
+For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after a friend told me how much fun he had.
 
 These are some notes for me to remember how I built it.
 
@@ -17,7 +17,7 @@ For my kids I wanted to use RFID cards. In addition the box should have buttons 
 
 I wanted the box portable, so I needed a power bank.
 
-My coworker has built a excellent custom-made case which fulfills my needs.
+My friend has built a excellent custom-made case which fulfills my needs.
 
 ![case](/assets/images/IMG_20191223_232037747.jpg)
 
@@ -73,6 +73,10 @@ Software installation first, so everything can be tested.
 10. Reboot with `sudo reboot`.
 
 # Gotchas, lessons learned, etc. #
+
+* It’s really important to solder as good as possible (I’m not very good though). If you have cold solder joints it may or may not work, which can be really annoying.
+* Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work. 
+* It really helps to sketch the wiring on a piece of paper, so you can fix possible issues or misconnections much faster.
 
 **to be continued**
 
