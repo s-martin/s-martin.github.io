@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "PAM8406 Amplifier"
+date:   2020-01-16 22:12:00 +0100
+categories: phoniebox
+---
+
+
+
+Features:
+
+    Can be powered with a computer USB port, USB power bank or a mobile phone charger to supply the 5V support power
+    Battery power can also be used
+    High efficiency: 90%
+    Provides 5W (left channel) + 5W (right channel) output power at 10% THD+N into a 2Ω speaker load and 5V power supply, 3W into 4Ω and 2W into 8Ω 
+    CMOS class D amplifier design for high efficiency and low cost
+    Integrated volume controls for left and right channels
+    Module has short-circuit current and over-temperature protection
+
+Specifications:
+
+    Operating voltage: 2.5V-5.5V, recommended 5V
+    Speaker Load: 2-8 Ohms
+    Input and Output Connectors: Pins on 0.2" centers
+    Size: 24 x 23 x 105 mm (L x W x H)
+    Net weight: 3g
+
+Package Contents:
+
+    1 x PAM8406 5W+5W Class D Stereo Audio Power Amplifier Module with Volume Control Potentiometers
+
+
+
+
+[github]: https://github.com/
+[github-pages]: https://pages.github.com/
+[jekyll]: https://jekyllrb.com/
+[jekyll-docs]: https://jekyllrb.com/docs/
+[vscode]: https://code.visualstudio.com/
+[markdown-plugin]: https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one

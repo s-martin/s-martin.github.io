@@ -1,11 +1,51 @@
 ---
 layout: post
-title:  "My Phoniebox installation"
-date:   2020-01-11 21:59:06 +0100
+title:  "My Phoniebox installation - revised"
+date:   2020-03-04 21:21:06 +0100
 categories: phoniebox raspberrypi
 ---
 
-**WORK IN PROGRESS**
+I built a [Phoniebox][phoniebox] for my kids, please see my [first blog post][first-post] for details. Overall the box works very good. But sometimes the box would restart out of the blue (sometimes multiple times in a row).
+
+I suspect the amplifier [PAM8406][amp], connected to 5V (Pin 4) at the Pi, would sometimes draw too much current, so the whole Pi restarts. I have a second port at the installed powerbank I could use, but then the amplifier would be always on and drain the powerbank even if the box is switched off.
+
+I finally decided to give the [Hifiberry Miniamp][miniamp] a try. So the amplifier would be turned off, if the Pi is off and I could also replace the USB sound card I have been using, because the case and the board of the soundcard are already a little bit broken and I wanted to replace it anyway.
+
+# Hardware Installation #
+
+* Remove the amplifier PAM8406 and the USB sound card
+* Disconnect the button `PLAY` from pin 40 and connect it to pin 25
+* Disconnect the button `PREV` from pin 38 and connect it to pin 24
+* Disconnect the button `VOL DOWN` from pin 35 and connect it to pin 33
+* Disconnect the button `VOL UP` from pin 36 and connect it to pin 32
+* Disconnect the button `NEXT` from pin 37 and connect it to pin 18
+* Connect the Miniamp to pin 1 (3V), pin 4 (5V), pin 14 (GND), pin 12 (GPIO18), pin 35 (GPIO19), pin 36 (GPIO16), pin 37 (GPIO26), pin 38 (GPIO20) and pin 40 (GPIO21).
+* Connect the speakers to the Miniamp (`L-+ R+-`), see also the [datasheet][datasheet-miniamp].
+
+    ![Miniamp](/assets/images/miniamp.jpg)
+
+# Software configuration #
+
+My Phoniebox is already installed, so I describe only the necessary changes here. For installation see my [first post][first-post].
+
+* Check especially [instructions for volume control][miniamp-details] and maybe instructions from [Hifiberry website][miniamp-config]
+* Enable Miniamp in `/boot/config.txt`
+
+    ```
+    config_hdmi_boost=4
+    #dtparam=audio=on
+    dtoverlay=hifiberry-dac
+    ``` 
+
+scripts/gpio_buttons.py folgendes
+ austauschen
+ _ siehe datein
+
+
+dann so wie hier http://splittscheid.de/selfmade-phoniebox/#miniampsetup
+
+
+
 
 For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after a friend told me how much fun he had.
 
@@ -82,8 +122,15 @@ Software installation first, so everything can be tested.
 
 [blog-instructions]: http://splittscheid.de/selfmade-phoniebox/
 [phoniebox]: https://github.com/MiczFlor/RPi-Jukebox-RFID
+[first-post]: https://s-martin.github.io/phoniebox/raspberrypi/2020/01/11/phoniebox.html
+[amp]: https://leeselectronic.com/en/product/1810.html
+[miniamp]: https://www.hifiberry.com/shop/boards/miniamp/
+[datasheet-miniamp]: https://www.hifiberry.com/docs/data-sheets/datasheet-miniamp/
+[miniamp-config]: https://www.hifiberry.com/docs/software/configuring-linux-3-18-x/
+[miniamp-details]: https://support.hifiberry.com/hc/en-us/articles/205377202-Adding-software-volume-control
+[miniamp-gpio]: https://www.hifiberry.com/docs/hardware/gpio-usage-of-hifiberry-boards/
 [raspian-image]: https://downloads.raspberrypi.org/raspbian_lite_latest
-[preconfigure-wifi]: https://raspberrypi.stackexchange.com/a/57023
+[preconfigure-wifi]: https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi
 [install-rpi]: https://www.raspberrypi.org/documentation/installation/installing-images/
 [balenaetcher]: https://www.balena.io/etcher/
 [install-phoniebox]: https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/INSTALL-stretch#one-line-install-command
