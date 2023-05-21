@@ -1,0 +1,55 @@
+---
+layout: post
+title:  "Installing ShinySDR"
+date:   2023-05-21 21:21:06 +0100
+categories: sdr shinysdr raspberrypi
+---
+
+This post describes how I installed [ShinySDR][shinysdr] on a Raspberry Pi.
+
+I had a RTL-SDR USB receiver (Nooelec) laying around and wanted to use it headless on a Raspberry Pi and use it via a web interface on my iPad. After searching for a while I tried ShinySDR.
+
+Following the [installation instructions][install-shinysdr] I did these steps:
+
+Install required and most of the optional packages: `sudo apt install gnuradio gr-osmosdr gr-air-modes multimon-ng rtl-433 wsjtx`
+
+Use latest version of Python package attrs: `pip install --upgrade attrs`
+
+Install some dependencies: `sudo apt-get install libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libjasper-dev`
+
+ShinySDR is currently only supporting Python 2.7 and I didn't want to install old Python, so I used a branch `python3` from a fork:
+
+```bash
+git clone -b python3 https://github.com/w1xm/shinysdr/
+```
+
+I needed to fix an import for Python 3.9 in `shinysdr/filters.py`:
+
+Change line 24 and 25 from
+
+```bash
+from fractions import gcd
+from math import pi, sin, cos
+```
+
+to 
+
+```bash
+#from fractions import gcd
+from math import pi, sin, cos, gcd
+```
+
+See also my [pull request][w1xm-pr].
+
+```bash
+python3 setup.py build
+sudo python3 setup.py install
+```
+
+Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
+
+# TODO config etc.
+
+[shinysdr]: https://shinysdr.switchb.org/
+[install-shinysdr]: https://shinysdr.switchb.org/manual/installation
+[w1xm-pr]: https://github.com/w1xm/shinysdr/pull/1
