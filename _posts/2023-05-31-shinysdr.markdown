@@ -11,17 +11,23 @@ I had a RTL-SDR USB receiver (Nooelec) laying around and wanted to use it headle
 
 Following the [installation instructions][install-shinysdr] I did these steps:
 
+## Dependencies
+
 Install required and most of the optional packages: `sudo apt install gnuradio gr-osmosdr gr-air-modes multimon-ng rtl-433 wsjtx`
+
+Install some more dependencies: `sudo apt-get install libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libjasper-dev`
 
 Use latest version of Python package attrs: `pip install --upgrade attrs`
 
-Install some dependencies: `sudo apt-get install libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libjasper-dev`
+Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
 
-ShinySDR is currently only supporting Python 2.7 and I didn't want to install old Python, so I used a branch `python3` from a fork:
+## Making source code Python 3.9 compatible
 
-```bash
-git clone -b python3 https://github.com/w1xm/shinysdr/
-```
+ShinySDR is currently only supporting Python 2.7 and I didn't want to install old Python, so I used the branch `python3` from **w1xm's** fork:
+
+`git clone -b python3 https://github.com/w1xm/shinysdr/`
+
+### Patching for Python 3.9
 
 I needed to fix an import for Python 3.9 in `shinysdr/filters.py`:
 
@@ -32,23 +38,23 @@ from fractions import gcd
 from math import pi, sin, cos
 ```
 
-to 
+to
 
 ```bash
-#from fractions import gcd
 from math import pi, sin, cos, gcd
 ```
 
 See also my [pull request][w1xm-pr].
 
+## Installing
+
 ```bash
+ch shinysdr
 python3 setup.py build
 sudo python3 setup.py install
 ```
 
-Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
-
-# TODO config etc.
+## TODO config, start etc.
 
 [shinysdr]: https://shinysdr.switchb.org/
 [install-shinysdr]: https://shinysdr.switchb.org/manual/installation
