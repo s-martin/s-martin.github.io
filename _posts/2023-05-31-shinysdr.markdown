@@ -49,12 +49,18 @@ See also my [pull request][w1xm-pr].
 ## Installing
 
 ```bash
-ch shinysdr
+cd shinysdr
 python3 setup.py build
 sudo python3 setup.py install
 ```
 
-## TODO config, start etc.
+## Configuration
+
+Create configs: `shinysdr --create ./shinysdr-config`
+
+I needed to change the ports, because the default ports were used on my system
+
+TODO config, start etc.
 
 [shinysdr]: https://shinysdr.switchb.org/
 [install-shinysdr]: https://shinysdr.switchb.org/manual/installation
