@@ -7,7 +7,7 @@ categories: sdr shinysdr raspberrypi
 
 This post describes how I installed [ShinySDR][shinysdr] on a Raspberry Pi.
 
-I had a RTL-SDR USB receiver (Nooelec) laying around and wanted to use it headless on a Raspberry Pi and use it via a web interface on my iPad. After searching for a while I tried ShinySDR.
+I had a RTL-SDR USB receiver ([Nooelec][nooelec]) laying around and wanted to use it headless on a Raspberry Pi and use it via a web interface on my iPad. After searching for a while I tried ShinySDR.
 
 Following the [installation instructions][install-shinysdr] I did these steps:
 
@@ -19,7 +19,7 @@ Install some more dependencies: `sudo apt-get install libatlas-base-dev libhdf5-
 
 Use latest version of Python package attrs: `pip install --upgrade attrs`
 
-Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
+
 
 ## Making source code Python 3.9 compatible
 
@@ -29,22 +29,17 @@ ShinySDR is currently only supporting Python 2.7 and I didn't want to install ol
 
 ### Patching for Python 3.9
 
-I needed to fix an import for Python 3.9 in `shinysdr/filters.py`:
+I needed to fix an import and a changed method name for Python 3.9 in `shinysdr/filters.py` and `shinysdr/types.py`, respectively:
 
-Change line 24 and 25 from
 
-```bash
-from fractions import gcd
-from math import pi, sin, cos
-```
 
-to
 
-```bash
-from math import pi, sin, cos, gcd
-```
 
-See also my [pull request][w1xm-pr].
+
+
+
+
+Please see my [pull request][w1xm-pr].
 
 ## Installing
 
@@ -53,7 +48,9 @@ cd shinysdr
 python3 setup.py build
 sudo python3 setup.py install
 ```
+**This needs to be done after installing:**
 
+Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install --upgrade git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
 ## Configuration
 
 Create configs: `shinysdr --create ./shinysdr-config`
@@ -63,5 +60,6 @@ I needed to change the ports, because the default ports were used on my system
 TODO config, start etc.
 
 [shinysdr]: https://shinysdr.switchb.org/
+[nooelec]: https://www.nooelec.com/store/sdr/sdr-receivers/nesdr-smartee-sdr.html
 [install-shinysdr]: https://shinysdr.switchb.org/manual/installation
 [w1xm-pr]: https://github.com/w1xm/shinysdr/pull/1
