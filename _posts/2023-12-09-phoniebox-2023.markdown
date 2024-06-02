@@ -9,17 +9,17 @@ I built a [Phoniebox][phoniebox] for my kids, please see my [first blog post][fi
 
 So I decided to rebuilt the Phoniebox with the new-and-shiny version [**3.x** with branch *future3/develop*][future3] and some new hardware parts.
 
-## What I wanted
+## What I Wanted
 
 For my kids I wanted to use RFID cards. In addition the box should have buttons for `Play/Pause`, `Next`, `Previous`, `Volume up` and `Volume down`.
 
 I wanted the box portable, so I needed a power bank.
 
-My friend has built a excellent custom-made case which fulfills my needs.
+My friend has built a excellent custom-made wooden case which helped to fulfill my needs.
 
 ![case](/assets/images/IMG_20191223_232037747.jpg)
 
-That [blog post][blog-instructions] (in German) provided lots of information and I used especially the On/Off description. Thanks for providing that info!
+That [blog post][blog-instructions] (in German) provided lots of information and I used especially the On/Off description.
 
 > [!WARNING]
 > The info in the mentioned blog post is somewhat dated, so you might need to adjust some things.
@@ -52,24 +52,40 @@ Excellent resource for the pinning is [pinout.xyz][pinout].
 
 #### Buttons
 
-* Prev: pin 39 (Gnd), pin 16 (GPIO23)
-* Next: pin 25 (Gnd), pin 18 (GPIO24)
-* Play: pin 20 (Gnd), pin 22 (GPIO25)
-* Vol-: pin 29 (GPIO5), pin 30 (Gnd)
-* Vol+: pin 31 (GPIO6), pin 34 (Gnd)
+* Prev: pin 39 (GND), pin 16 (GPIO23)
+* Next: pin 25 (GND), pin 18 (GPIO24)
+* Play: pin 20 (GND), pin 22 (GPIO25)
+* Vol-: pin 29 (GPIO5), pin 30 (GND)
+* Vol+: pin 31 (GPIO6), pin 34 (GND)
   
 #### Miniamp
 
-* Connect the Miniamp to pin 1 (3V), pin 4 (5V), pin 14 (GND), pin 12 (GPIO18), pin 35 (GPIO19), pin 36 (GPIO16), pin 37 (GPIO26), pin 38 (GPIO20) and pin 40 (GPIO21).
-* Connect the speakers to the Miniamp (`L-+ R+-`), see also the [datasheet][datasheet-miniamp].
+* Connect the Miniamp to Raspberry Pi
+  * pin 1 (3V)
+  * pin 4 (5V)
+  * pin 14 (GND)
+  * pin 12 (GPIO18)
+  * pin 35 (GPIO19)
+  * pin 36 (GPIO16)
+  * pin 37 (GPIO26)
+  * pin 38 (GPIO20)
+  * pin 40 (GPIO21)
+* Connect the speakers to the Miniamp (`-L+` and `+R-`), see also the [datasheet][datasheet-miniamp].
 
     ![Miniamp](/assets/images/miniamp.jpg)
 
 #### OnOffShim & Power Button
 
 * [Pinout OnOffShim][pinoutonoff]
-* Connect the OnOffShim to pin 2 (5V Pwr), pin 6 (GND), pin 7 (GPIO4), pin 11 (GPIO 17)
-* Connect Btn1 of OnOffShim to NO (Normal Open) of Power Button, Btn2 to C (Common) and pin 15 (GPIO22) to `+` as well as pin 9 (Gnd) to `-`
+* Connect the OnOffShim to Raspberry Pi
+  * pin 2 (5V Power)
+  * pin 6 (GND)
+  * pin 7 (GPIO4)
+  * pin 11 (GPIO 17)
+* Connect Btn1 of OnOffShim to NO (Normal Open) of Power Button
+* Connect Btn2 of OnOffShim to C (Common) of Power Button
+* Connect pin 15 (GPIO22) of Raspberry Pi to `+` of Power Button
+* Connect pin 9 (GND) of Raspberry Pi to `-` of Power Button
 
 ### Installation
 
@@ -81,42 +97,32 @@ Excellent resource for the pinning is [pinout.xyz][pinout].
   And I use the `future3/develop` branch
 * I use the following settings
   * Don't use IPv6, Bluetooth, Kiosk mode, Autohotspot
-  * As I don't use the Release branch I need to [build the web app locally][build-webapp]
+  * As I don't use the Release branch I need to [build the web app locally][build-webapp]. IMPORTANT: install node first (see link)!
   * I connected my USB reader before the installation and selected it during install
-* Configuring Miniamp according to [instructions][miniamp-config]: enable Miniamp in `/boot/config.txt` with
-
-    ```bash
-    dtparam=audio=off
-    dtoverlay=hifiberry-dac
-    dtoverlay=vc4-kms-v3d,noaudio
-    ```
-
-* Reboot
-* Follow the [audio configuration instructions and checks][audio-instructions]
+* **Reboot**
+* Install Hifiberry Miniamp using the [provided script][miniamp-install-script]
+* ?? Follow the [audio configuration instructions and checks][audio-instructions]
 * Install [OnOffShim][onoffshim] software
   * Use this one line command: `curl https://get.pimoroni.com/onoffshim | bash`
-  * Set `daemon_active=1`, `led_pin=22` and `hold_time=1` in file `/etc/cleanshutd.conf`
+  * ?? Set `daemon_active=1`, `led_pin=22` and `hold_time=1` in file `/etc/cleanshutd.conf`
   * TODO weg: sudo apt-get install libczmq-dev
   * TODO weg: in src/cli_client: gcc pbc.c -o pbc -lzmq -Wall
-  * Make sure the original Phoniebox shutdown script is used: Open `sudo nano /usr/bin/cleanshutd` and replace `shutdown -h +$shutdown_delay` with `source ~/RPi-Jukebox-RFID/.venv/bin/activate; ~/RPi-Jukebox-RFID/src/jukebox/run_rpc_tool.py -c host.shutdown; deactivate`. Be aware that `shutdown_delay` has no effect anymore.
+  * ?? Make sure the original Phoniebox shutdown script is used: Open `sudo nano /usr/bin/cleanshutd` and replace `shutdown -h +$shutdown_delay` with `source ~/RPi-Jukebox-RFID/.venv/bin/activate; ~/RPi-Jukebox-RFID/src/jukebox/run_rpc_tool.py -c host.shutdown; deactivate`. Be aware that `shutdown_delay` has no effect anymore.
 
 Wiring Sketch:
 
 ![sketch](/assets/images/IMG_20200111_212542257.jpg)
 
-# Software configuration
+## Software configuration & installation
 
-dann so wie hier http://splittscheid.de/selfmade-phoniebox/#miniampsetup
-
-## Software installation
+dann so wie hier <http://splittscheid.de/selfmade-phoniebox/#miniampsetup>
 
 Software installation first, so everything can be tested.
 
-7. I configured the sound according to this [description][fix-sound].
-8. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file `scripts/gpio-buttons.py` the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
+1. I configured the sound according to this [description][fix-sound].
+1. To use the buttons I configured the GPIO settings according to [this manual][gpio-config], but without the shutdown, because I use the OnOffShim (see later steps). In the file `scripts/gpio-buttons.py` the pins can be configured and (de)activated. I don‘t use recording although the case and the hardware supports it.
 
-
-# Gotchas, lessons learned, etc. #
+## Gotchas, Lessons learned
 
 * It’s really important to solder as good as possible (I’m not very good though). If you have cold solder joints it may or may not work, which can be really annoying.
 * Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work.
@@ -132,6 +138,7 @@ Software installation first, so everything can be tested.
 [gpioexp]: https://www.az-delivery.de/products/gpio-expansion-board-fur-raspberry-pi?variant=38524730706
 [installation]: https://github.com/MiczFlor/RPi-Jukebox-RFID/blob/future3/develop/documentation/builders/installation.md
 [build-webapp]: https://github.com/MiczFlor/RPi-Jukebox-RFID/blob/future3/develop/documentation/developers/development-environment.md#steps-to-install
+[miniamp-install-script]: https://github.com/MiczFlor/RPi-Jukebox-RFID/blob/future3/develop/documentation/builders/components/soundcards/hifiberry.md
 [audio-instructions]: https://github.com/MiczFlor/RPi-Jukebox-RFID/blob/future3/develop/documentation/builders/audio.md#audio-configuration
 [miniamp]: https://www.hifiberry.com/shop/boards/miniamp/
 [datasheet-miniamp]: https://www.hifiberry.com/docs/data-sheets/datasheet-miniamp/
