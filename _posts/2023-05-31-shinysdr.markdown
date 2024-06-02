@@ -19,8 +19,6 @@ Install some more dependencies: `sudo apt-get install libatlas-base-dev libhdf5-
 
 Use latest version of Python package attrs: `pip install --upgrade attrs`
 
-
-
 ## Making source code Python 3.9 compatible
 
 ShinySDR is currently only supporting Python 2.7 and I didn't want to install old Python, so I used the branch `python3` from **w1xm's** fork:
@@ -31,14 +29,6 @@ ShinySDR is currently only supporting Python 2.7 and I didn't want to install ol
 
 I needed to fix an import and a changed method name for Python 3.9 in `shinysdr/filters.py` and `shinysdr/types.py`, respectively:
 
-
-
-
-
-
-
-
-
 Please see my [pull request][w1xm-pr].
 
 ## Installing
@@ -48,9 +38,11 @@ cd shinysdr
 python3 setup.py build
 sudo python3 setup.py install
 ```
+
 **This needs to be done after installing:**
 
 Latest pip release of txWS 0.9.1 has a bug under Python 3.9, so I installed it directly from Github `pip install --upgrade git+https://github.com/MostAwesomeDude/txWS#egg=txWS`
+
 ## Configuration
 
 Create configs: `shinysdr --create ./shinysdr-config`

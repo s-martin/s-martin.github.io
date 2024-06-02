@@ -26,12 +26,13 @@ That [blog post][blog-instructions] (in German) provided lots of information and
 # Hardware #
 
 I used the following hardware:
+
 * Raspberry Pi 3 (doesn't need an active cooling)
 * Ravpower ??? Powerbank
 * Neuftech RFID reader
 * USB sound card
 * 5W Amplifier
-* OnOffShim 
+* OnOffShim
 * Arcade buttons
 * Power button
 * ...
@@ -75,7 +76,7 @@ Software installation first, so everything can be tested.
 # Gotchas, lessons learned, etc. #
 
 * It’s really important to solder as good as possible (I’m not very good though). If you have cold solder joints it may or may not work, which can be really annoying.
-* Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work. 
+* Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work.
 * It really helps to sketch the wiring on a piece of paper, so you can fix possible issues or misconnections much faster.
 
 **to be continued**

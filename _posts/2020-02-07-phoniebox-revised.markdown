@@ -11,7 +11,7 @@ I suspect the amplifier [PAM8406][amp], connected to 5V (Pin 4) at the Pi, would
 
 I finally decided to give the [Hifiberry Miniamp][miniamp] a try. So the amplifier would be turned off, if the Pi is off and I could also replace the USB sound card I have been using, because the case and the board of the soundcard are already a little bit broken and I wanted to replace it anyway.
 
-# Hardware Installation #
+# Hardware Installation
 
 * Remove the amplifier PAM8406 and the USB sound card
 * Disconnect the button `PLAY` from pin 40 and connect it to pin 25
@@ -31,27 +31,23 @@ My Phoniebox is already installed, so I describe only the necessary changes here
 * Check especially [instructions for volume control][miniamp-details] and maybe instructions from [Hifiberry website][miniamp-config]
 * Enable Miniamp in `/boot/config.txt`
 
-    ```
+    ```text
     config_hdmi_boost=4
     #dtparam=audio=on
     dtoverlay=hifiberry-dac
-    ``` 
+    ```
 
 scripts/gpio_buttons.py folgendes
  austauschen
  _ siehe datein
 
-
 dann so wie hier http://splittscheid.de/selfmade-phoniebox/#miniampsetup
-
-
-
 
 For Christmas 2019 I built my kids a [Phoniebox][phoniebox] after a friend told me how much fun he had.
 
 These are some notes for me to remember how I built it.
 
-# What I wanted #
+# What I wanted
 
 For my kids I wanted to use RFID cards. In addition the box should have buttons for `Play/Pause`, `FF`, `Rwd`, `Volume up` and `Volume down`.
 
@@ -63,9 +59,10 @@ My friend has built a excellent custom-made case which fulfills my needs.
 
 That [blog post][blog-instructions] (in German) provided lots of information and I used especially the On/Off description. Thanks for providing that info!
 
-# Hardware #
+# Hardware
 
 I used the following hardware:
+
 * Raspberry Pi 3 (doesn't need an active cooling)
 * Ravpower ??? Powerbank
 * Neuftech RFID reader
@@ -76,7 +73,7 @@ I used the following hardware:
 * Power button
 * ...
 
-# Building #
+# Building
 
 I connected and soldered everything first, before I assembled the complete box to make sure everything works.
 
@@ -112,7 +109,7 @@ Software installation first, so everything can be tested.
 
 10. Reboot with `sudo reboot`.
 
-# Gotchas, lessons learned, etc. #
+# Gotchas, lessons learned, etc.
 
 * It’s really important to solder as good as possible (I’m not very good though). If you have cold solder joints it may or may not work, which can be really annoying.
 * Connecting everything together first to test it is really helpful, because you don’t want to assemble everything together in a (tiny) case and then something doesn’t work. 
