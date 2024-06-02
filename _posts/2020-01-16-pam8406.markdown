@@ -29,9 +29,6 @@ Package Contents:
 
     1 x PAM8406 5W+5W Class D Stereo Audio Power Amplifier Module with Volume Control Potentiometers
 
-
-
-
 [github]: https://github.com/
 [github-pages]: https://pages.github.com/
 [jekyll]: https://jekyllrb.com/
