@@ -85,7 +85,7 @@ Excellent resource for the pinning is [pinout.xyz][pinout].
 * Connect Btn1 of OnOffShim to NO (Normal Open) of Power Button
 * Connect Btn2 of OnOffShim to C (Common) of Power Button
 * Connect pin 15 (GPIO22) of Raspberry Pi to `+` of Power Button
-* Connect pin 9 (GND) of Raspberry Pi to `-` of Power Button
+* Connect pin 9 (GND) of Raspberry Pi to `-` of Power Button (?? currently works only with - connected to GPIO7 / pin 26??)
 
 ### Installation
 
